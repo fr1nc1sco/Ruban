@@ -1,0 +1,106 @@
+[gd_scene load_steps=13 format=3 uid="uid://cn1bdvenn2y5f"]
+
+[ext_resource type="Script" path="res://Project 1/Characters/Ruban.gd" id="1_0epyk"]
+[ext_resource type="Texture2D" uid="uid://bo7eqeq8kbnu7" path="res://Project 1/Animations/Characters/Ruban/rightIdle.png" id="1_rmlld"]
+[ext_resource type="Texture2D" uid="uid://c35fqtbct0vt0" path="res://Project 1/Animations/Characters/Ruban/righFall.png" id="2_q31iu"]
+[ext_resource type="Texture2D" uid="uid://pfqx0hnkjac3" path="res://Project 1/Animations/Characters/Ruban/rightJab.png" id="5_bqxnk"]
+[ext_resource type="Texture2D" uid="uid://ukyvyxjntr7s" path="res://Project 1/Animations/Characters/Ruban/rightLand.png" id="6_4ov0p"]
+[ext_resource type="Texture2D" uid="uid://c7unkjsmx7kur" path="res://Project 1/Animations/Characters/Ruban/rightJumpCharge.png" id="6_bu2kc"]
+[ext_resource type="Texture2D" uid="uid://xt2756r50lor" path="res://Project 1/Animations/Characters/Ruban/rightPunch02.png" id="7_47ikb"]
+[ext_resource type="Texture2D" uid="uid://cvyh51fyl1jlk" path="res://Project 1/Animations/Characters/Ruban/rightWalk01.png" id="8_uh3hg"]
+[ext_resource type="Texture2D" uid="uid://bf6qj1slr2y6h" path="res://Project 1/Animations/Characters/Ruban/rightWalk02.png" id="9_bo2eu"]
+[ext_resource type="Texture2D" uid="uid://b228fr52n7fii" path="res://Project 1/Animations/Characters/Ruban/rightWalk03.png" id="10_begts"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0f3u2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q31iu")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rmlld")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.2,
+"texture": ExtResource("5_bqxnk")
+}, {
+"duration": 0.3,
+"texture": ExtResource("1_rmlld")
+}],
+"loop": true,
+"name": &"jab",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bu2kc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_q31iu")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_4ov0p")
+}],
+"loop": true,
+"name": &"land",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("1_rmlld")
+}, {
+"duration": 3.0,
+"texture": ExtResource("7_47ikb")
+}],
+"loop": true,
+"name": &"punch",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_uh3hg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bo2eu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_begts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_rmlld")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_agnre"]
+radius = 8.0
+height = 48.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_0epyk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0f3u2")
+animation = &"jump"
+frame_progress = 0.77085
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_agnre")
